@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot Demo</title>
+    <style>
+        body {
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        #result {
+            font-size: 24px;
+            margin: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎰 SLOT التجريبية</h1>
+    <p>نسبة الربح: 50%</p>
+    <p>كل 9 ضغطات = فوز مؤكد</p>
+    <div id="result">اضغط لبدء اللعب</div>
+    <button onclick="spin()">Spin</button>
+
+    <script>
+        let count = 0;
+
+        function spin() {
+            count++;
+            let resultText = '';
+            if (count % 9 === 0) {
+                let reward = Math.floor(Math.random() * 10000000000) + 12000000000; // من 12 الى 22 مليار
+                resultText = `🎉 فزت بـ ${reward.toLocaleString()} عملة!`;
+            } else if (Math.random() < 0.5) {
+                let reward = Math.floor(Math.random() * 10000000) + 1000000;
+                resultText = `ربحت ${reward.toLocaleString()} عملة`;
+            } else {
+                resultText = 'لم تربح، حاول مجددًا';
+            }
+            document.getElementById('result').textContent = resultText;
+        }
+    </script>
+</body>
+</html>
